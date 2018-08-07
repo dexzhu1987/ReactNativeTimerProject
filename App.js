@@ -94,7 +94,7 @@ export default class App extends React.Component {
       reshow: false,
       isOnBreak: false,
       isStart: true,
-      startButtonText: "PAUSE",
+      startButtonText: "II",
       isOnLongBreak: false
     };
     this.child = React.createRef();
@@ -106,7 +106,7 @@ export default class App extends React.Component {
       reshow: true,
       isOnBreak: isOnBreak,
       isStart: true,
-      startButtonText: "PAUSE",
+      startButtonText: "II",
       isOnLongBreak: isOnLongBreak
     });
     setTimeout(() => {
@@ -120,7 +120,7 @@ export default class App extends React.Component {
     this.child.current.getAlert(this.state.isStart);
     this.setState({
       isStart: !this.state.isStart,
-      startButtonText: this.state.isStart ? "START" : "PAUSE"
+      startButtonText: this.state.isStart ? "▶︎" : "II"
     });
   }
 
@@ -136,7 +136,7 @@ export default class App extends React.Component {
     }
     this.setState({
       isStart: true,
-      startButtonText: "PAUSE"
+      startButtonText: "II"
     });
   }
 
@@ -150,10 +150,14 @@ export default class App extends React.Component {
             ref={this.child}
           />
         )}
-        <Button
-          title={this.state.startButtonText}
-          onPress={() => this.toggleStartPause()}
-        />
+        <View style={styles.roundButton}>
+          <View style={styles.roundButtonInside}>
+            <Button
+              title={this.state.startButtonText}
+              onPress={() => this.toggleStartPause()}
+            />
+          </View>
+        </View>
         <View style={styles.buttonsRow}>
           <SelectButtons
             title="POMODORO"
@@ -195,6 +199,25 @@ const styles = StyleSheet.create({
   buttonTitle: {
     fontSize: 20,
     fontWeight: "bold"
+  },
+  roundButton: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderColor: "#cc9900",
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffe680',
+  },
+  roundButtonInside: {
+    width: 70,
+    height: 70,
+    borderRadius: 38,
+    borderColor: "#cc9900",
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   button: {
     width: 177,
