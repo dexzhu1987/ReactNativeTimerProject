@@ -154,7 +154,6 @@ export default class App extends React.Component {
           title={this.state.startButtonText}
           onPress={() => this.toggleStartPause()}
         />
-        <Button title="RESET" onPress={() => this.toggleReset()} />
         <View style={styles.buttonsRow}>
           <SelectButtons
             title="PROMODORO"
