@@ -169,12 +169,17 @@ export default class App extends React.Component {
             onPress={() => this.toggleCounter(SHORTBREAK, true, false)}
           />
           <SelectButtons
-            title="Long Break"
+            title="LONG BREAK"
             color="#ffd11a"
             background="#ffe680"
             onPress={() => this.toggleCounter(LONGBREAK, true, true)}
           />
-          <SelectButtons title="Loop" color="#ffd11a" background="#ffe680" />
+          <SelectButtons
+            title="RESET"
+            color="#ffd11a"
+            background="#ffe680"
+            onPress={() => this.toggleReset()}
+          />
         </View>
       </View>
     );
