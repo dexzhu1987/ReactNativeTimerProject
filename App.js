@@ -156,26 +156,26 @@ export default class App extends React.Component {
         />
         <View style={styles.buttonsRow}>
           <SelectButtons
-            title="PROMODORO"
-            color="#ffd11a"
+            title="POMODORO"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(PROMODORO, false, false)}
           />
           <SelectButtons
             title="SHORT BREAK"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(SHORTBREAK, true, false)}
           />
           <SelectButtons
             title="LONG BREAK"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(LONGBREAK, true, true)}
           />
           <SelectButtons
             title="RESET"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleReset()}
           />
@@ -188,17 +188,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ffd11a",
     alignItems: "center",
     justifyContent: "center"
   },
   buttonTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold"
   },
   button: {
-    width: 168,
-    height: 50,
+    width: 177,
+    height: 55,
+    marginTop: 10,
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,
@@ -214,6 +215,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   counterText: {
-    fontSize: 100
+    fontSize: 100,
+    color: "#ffffff"
   }
 });
