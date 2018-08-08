@@ -9,8 +9,8 @@ import {
 } from "react-native";
 import { Constants } from "expo";
 
-const SHORTBREAK = 3;
-const PROMODORO = 15;
+const SHORTBREAK = 300;
+const PROMODORO = 1500;
 const LONGBREAK = 600;
 const VIBRATIONDURATION = 10000;
 const VIBRATIONPATTERN = [1000, 2000, 3000];
@@ -104,7 +104,7 @@ export default class App extends React.Component {
       reshow: false,
       isOnBreak: false,
       isStart: true,
-      startButtonText: "PAUSE",
+      startButtonText: "II",
       isOnLongBreak: false
     };
     this.child = React.createRef();
@@ -116,7 +116,7 @@ export default class App extends React.Component {
       reshow: true,
       isOnBreak: isOnBreak,
       isStart: true,
-      startButtonText: "PAUSE",
+      startButtonText: "II",
       isOnLongBreak: isOnLongBreak
     });
     setTimeout(() => {
@@ -130,7 +130,7 @@ export default class App extends React.Component {
     this.child.current.getAlert(this.state.isStart);
     this.setState({
       isStart: !this.state.isStart,
-      startButtonText: this.state.isStart ? "START" : "PAUSE"
+      startButtonText: this.state.isStart ? "▶︎" : "II"
     });
   }
 
@@ -146,7 +146,7 @@ export default class App extends React.Component {
     }
     this.setState({
       isStart: true,
-      startButtonText: "PAUSE"
+      startButtonText: "II"
     });
   }
 
@@ -160,32 +160,36 @@ export default class App extends React.Component {
             ref={this.child}
           />
         )}
-        <Button
-          title={this.state.startButtonText}
-          onPress={() => this.toggleStartPause()}
-        />
+        <View style={styles.roundButton}>
+          <View style={styles.roundButtonInside}>
+            <Button
+              title={this.state.startButtonText}
+              onPress={() => this.toggleStartPause()}
+            />
+          </View>
+        </View>
         <View style={styles.buttonsRow}>
           <SelectButtons
-            title="PROMODORO"
-            color="#ffd11a"
+            title="POMODORO"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(PROMODORO, false, false)}
           />
           <SelectButtons
             title="SHORT BREAK"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(SHORTBREAK, true, false)}
           />
           <SelectButtons
             title="LONG BREAK"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleCounter(LONGBREAK, true, true)}
           />
           <SelectButtons
             title="RESET"
-            color="#ffd11a"
+            color="#ffffff"
             background="#ffe680"
             onPress={() => this.toggleReset()}
           />
@@ -198,17 +202,37 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#ffd11a",
     alignItems: "center",
     justifyContent: "center"
   },
   buttonTitle: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold"
   },
+  roundButton: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderColor: "#cc9900",
+    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffe680"
+  },
+  roundButtonInside: {
+    width: 70,
+    height: 70,
+    borderRadius: 38,
+    borderColor: "#cc9900",
+    borderWidth: 2,
+    justifyContent: "center",
+    alignItems: "center"
+  },
   button: {
-    width: 168,
-    height: 50,
+    width: 177,
+    height: 55,
+    marginTop: 10,
     marginBottom: 10,
     marginLeft: 5,
     marginRight: 5,
@@ -224,6 +248,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   counterText: {
-    fontSize: 100
+    fontSize: 100,
+    color: "#ffffff"
   }
 });
