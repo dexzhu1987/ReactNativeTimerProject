@@ -1,10 +1,19 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableOpacity,
+  Vibration
+} from "react-native";
 import { Constants } from "expo";
 
-const SHORTBREAK = 300;
-const PROMODORO = 1500;
+const SHORTBREAK = 3;
+const PROMODORO = 15;
 const LONGBREAK = 600;
+const VIBRATIONDURATION = 10000;
+const VIBRATIONPATTERN = [1000, 2000, 3000];
 var timer;
 
 class Counter extends Component {
@@ -49,6 +58,7 @@ class Counter extends Component {
         });
       }
       alert("done");
+      Vibration.vibrate(VIBRATIONDURATION);
     }
   };
 
